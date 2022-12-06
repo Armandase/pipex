@@ -1,0 +1,16 @@
+Makefile
+file
+ft_exe_pipe.c
+ft_execution.c
+ft_exit_free.c
+ft_open_file.c
+input
+libft
+mandatory
+out
+output
+pipex
+pipex.h
+pipex_main.c
+pipex_parsing.c
+pipex_path.c

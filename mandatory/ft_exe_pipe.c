@@ -6,7 +6,7 @@
 /*   By: adamiens <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 16:38:08 by adamiens          #+#    #+#             */
-/*   Updated: 2022/12/03 19:01:48 by adamiens         ###   ########.fr       */
+/*   Updated: 2022/12/04 12:02:05 by adamiens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,12 @@ void	ft_first_read(int pipe_tab[2], t_args *args, t_file *fd)
 		perror("Error");
 		exit(EXIT_FAILURE);
 	}
-	dup2(pipe_tab[0], 0);
-	close(pipe_tab[1]);
-	ft_wait_end_child(args, tmp, fd);
+	else
+	{
+		dup2(pipe_tab[0], 0);
+		close(pipe_tab[1]);
+		ft_wait_end_child(args, tmp, fd);
+	}
 }
 
 void	ft_end_read(int pipe_tab[2], t_args *args, t_file *fd)
@@ -69,8 +72,8 @@ void	ft_end_read(int pipe_tab[2], t_args *args, t_file *fd)
 		ft_error(args, fd);
 	else if (tmp == 0)
 	{
-		dup2(fd->fd_out, 1);
 		dup2(pipe_tab[0], 0);
+		dup2(fd->fd_out, 1);
 		close(pipe_tab[0]);
 		execve(args[1].path, args[1].command, NULL);
 		exit(EXIT_FAILURE);

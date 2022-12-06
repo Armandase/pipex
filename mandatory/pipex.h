@@ -6,7 +6,7 @@
 /*   By: adamiens <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 11:24:21 by adamiens          #+#    #+#             */
-/*   Updated: 2022/12/03 19:07:33 by adamiens         ###   ########.fr       */
+/*   Updated: 2022/12/04 16:24:54 by adamiens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ void	ft_free_struct(t_args *args);
 void	ft_index_free_struct(t_args *args, int max);
 void	ft_first_read(int pipe_tab[2], t_args *args, t_file *fd);
 void	ft_end_read(int pipe_tab[2], t_args *args, t_file *fd);
+void	ft_error(t_args *args, t_file *fd);
 
 #endif

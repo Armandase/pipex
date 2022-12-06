@@ -6,12 +6,13 @@
 /*   By: adamiens <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 13:09:58 by adamiens          #+#    #+#             */
-/*   Updated: 2022/11/30 16:24:19 by adamiens         ###   ########.fr       */
+/*   Updated: 2022/12/06 13:27:03 by adamiens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "pipex.h"
+#include <stdio.h>
 #include <unistd.h>
 
 char	*ft_subcpy_str(char *str, char c)
@@ -70,6 +71,20 @@ void	ft_verif_args(char **argv, char **directory, t_args *args)
 	args[i - 2].path = NULL;
 }
 
+/*void	ft_check_len(int argc, char **argv)
+{
+	int		i;
+	size_t	len;
+
+	i = 0;
+	while (i < argc)
+	{
+		len = ft_strlen(argv[i]);
+		if (len == 0)
+			perror("Error");
+		i++;
+	}
+}*/
 /* **********************************************
  * parsing : 
  * 		claim every directories path from the envp
@@ -83,8 +98,6 @@ t_args	*ft_parsing(int argc, char **argv, char **envp)
 	char	**directory;
 	t_args	*args;
 
-	if (argc != 5)
-		exit(1);
 	args = ft_calloc(sizeof(t_args), (argc - 2));
 	directory = ft_get_path(envp);
 	ft_verif_args(argv, directory, args);
