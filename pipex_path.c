@@ -6,7 +6,7 @@
 /*   By: adamiens <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 11:34:42 by adamiens          #+#    #+#             */
-/*   Updated: 2022/11/30 16:12:28 by adamiens         ###   ########.fr       */
+/*   Updated: 2022/12/06 17:25:46 by adamiens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char	**ft_get_path(char **envp)
 	return (directory);
 }
 
-int	ft_cpy_path(char **directory, char *argv, t_args *args , int i)
+void	ft_cpy_path(char **command, char **directory)
 {
 	int		j;
 	char	*tmp;
@@ -69,11 +69,12 @@ int	ft_cpy_path(char **directory, char *argv, t_args *args , int i)
 	while (directory[j])
 	{
 		tmp = ft_strjoin(directory[j], "/");
-		str = ft_strjoin(tmp, argv);
+		str = ft_strjoin(tmp, command[0]);
 		free(tmp);
 		if (access(str, X_OK) == 0)
 		{
-			args[i - 2].path = ft_strdup(str);
+			free(command[0]);
+			command[0] = ft_strdup(str);
 			free(str);
 			break ;
 		}
@@ -81,8 +82,4 @@ int	ft_cpy_path(char **directory, char *argv, t_args *args , int i)
 			free(str);
 		j++;
 	}
-	free(argv);
-	if (!(directory[j]))
-		return (0);
-	return (1);
 }

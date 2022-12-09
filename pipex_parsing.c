@@ -6,85 +6,36 @@
 /*   By: adamiens <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 13:09:58 by adamiens          #+#    #+#             */
-/*   Updated: 2022/12/06 13:27:03 by adamiens         ###   ########.fr       */
+/*   Updated: 2022/12/09 10:19:26 by adamiens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "pipex.h"
-#include <stdio.h>
-#include <unistd.h>
-
-char	*ft_subcpy_str(char *str, char c)
-{
-	char	*cpy;
-	int		i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == c)
-			break ;
-		i++;
-	}
-	cpy = malloc(sizeof(char) * (i + 1));
-	if (!cpy)
-		return (NULL);
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == c)
-			break ;
-		cpy[i] = str[i];
-		i++;
-	}
-	cpy[i] = '\0';
-	return (cpy);
-}
-
-void	ft_get_command(t_args *args, char *argv, int i)
-{
-	args[i].command = ft_split(argv, ' ');
-	free(args[i].command[0]);
-	args[i].command[0] = ft_strdup(args[i].path);
-}
 
 void	ft_verif_args(char **argv, char **directory, t_args *args)
 {
 	int		i;
-	char	*str;
-	int		check;
+	int		offset;
 
+	offset = 2;
 	i = 2;
 	while (argv[i + 1])
 	{
-		str = ft_subcpy_str(argv[i], ' ');
-		check = ft_cpy_path(directory, str, args, i);
-		if (!check)
+		if (ft_strlen(argv[i]) == 0)
 		{
-			ft_index_free_struct(args, i - 2);
-			ft_exit_error(directory);
+			write(2, "Error : Empty command\n", 22);
+			i++;
+			offset++;
 		}
-		ft_get_command(args, argv[i], i - 2);
+		args[i - offset].command = ft_split(argv[i], ' ');
+		//args[i - 2].command = ft_split(argv[i], ' ');
+		//ft_cpy_path(args[i - 2].command, directory);
+		ft_cpy_path(args[i - offset].command, directory);
 		i++;
 	}
-	args[i - 2].path = NULL;
 }
 
-/*void	ft_check_len(int argc, char **argv)
-{
-	int		i;
-	size_t	len;
-
-	i = 0;
-	while (i < argc)
-	{
-		len = ft_strlen(argv[i]);
-		if (len == 0)
-			perror("Error");
-		i++;
-	}
-}*/
 /* **********************************************
  * parsing : 
  * 		claim every directories path from the envp

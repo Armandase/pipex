@@ -6,7 +6,7 @@
 /*   By: adamiens <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:54:19 by adamiens          #+#    #+#             */
-/*   Updated: 2022/12/05 16:17:17 by adamiens         ###   ########.fr       */
+/*   Updated: 2022/12/06 14:21:37 by adamiens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,6 @@ void	ft_index_free_struct(t_args *args, int max)
 			j++;
 		}
 		free(args[i].command);
-		i++;
-	}
-	i = 0;
-	while (args[i].path && i < max)
-	{
-		free(args[i].path);
 		i++;
 	}
 	if (args)
@@ -81,12 +75,6 @@ void	ft_free_struct(t_args *args)
 			j++;
 		}
 		free(args[i].command);
-		i++;
-	}
-	i = 0;
-	while (args[i].path)
-	{
-		free(args[i].path);
 		i++;
 	}
 	if (args)

@@ -6,7 +6,7 @@
 /*   By: adamiens <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 11:24:21 by adamiens          #+#    #+#             */
-/*   Updated: 2022/12/06 13:19:57 by adamiens         ###   ########.fr       */
+/*   Updated: 2022/12/08 19:18:19 by adamiens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 
 typedef struct s_args
 {
-	char	*path;
 	char	**command;
+	int		offset;
 }	t_args;
 
 typedef struct s_file
@@ -30,9 +30,9 @@ typedef struct s_file
 	int		fd_in;
 	int		fd_out;
 }	t_file;
-void	ft_open_file(int *argc, char **argv, t_file *fd);
+void	ft_open_file(int argc, char **argv, t_file *fd);
 t_args	*ft_parsing(int argc, char **argv, char **envp);
-int		ft_cpy_path(char **directory, char *argv, t_args *args, int i);
+void	ft_cpy_path(char **command, char **directory);
 char	**ft_get_path(char **envp);
 void	ft_exit_error(char **strs);
 void	free_struct(t_args *args);
