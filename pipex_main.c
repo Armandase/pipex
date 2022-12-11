@@ -19,8 +19,8 @@ int	main(int argc, char **argv, char **envp)
 
 	if (argc < 5)
 		exit(1);
-	//if (ft_strncmp(argv[1], "here_doc", 9) == 0)
-	//	ft_heredoc(args, fd);
+	if (ft_strncmp(argv[1], "here_doc", 9) == 0)
+		ft_heredoc(argv, argc);
 	args = ft_parsing(argc, argv, envp);
 	fd = malloc(sizeof(t_file));
 	ft_open_file(argc, argv, fd);

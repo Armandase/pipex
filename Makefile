@@ -1,6 +1,6 @@
 NAME		= pipex
 SRCS		= pipex_main.c pipex_parsing.c pipex_path.c ft_open_file.c ft_exit_free.c ft_execution.c ft_exe_pipe.c
-CC			= clang
+CC			= gcc
 CFLAGS		= -Wall -Werror -Wextra
 LIBS		= -Llibft -lft
 OBJS		= ${SRCS:.c=.o}
