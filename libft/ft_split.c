@@ -6,7 +6,7 @@
 /*   By: adamiens <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:46:28 by adamiens          #+#    #+#             */
-/*   Updated: 2022/12/06 15:20:30 by adamiens         ###   ########.fr       */
+/*   Updated: 2022/10/03 17:51:46 by adamiens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	strs = malloc(sizeof(char *) * (ft_totalen(s, c) + 2));
+	strs = malloc(sizeof(char *) * (ft_totalen(s, c) + 1));
 	if (!strs)
 		return (NULL);
 	ijk[0] = 0;

@@ -6,7 +6,7 @@
 /*   By: adamiens <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 13:16:10 by adamiens          #+#    #+#             */
-/*   Updated: 2022/11/17 11:26:10 by adamiens         ###   ########.fr       */
+/*   Updated: 2022/10/02 13:16:12 by adamiens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (!*lst)
-		*lst = new;
 	new->next = *lst;
 	*lst = new;
 }

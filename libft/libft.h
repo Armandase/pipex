@@ -6,7 +6,7 @@
 /*   By: adamiens <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 10:42:11 by adamiens          #+#    #+#             */
-/*   Updated: 2022/11/18 15:16:31 by adamiens         ###   ########.fr       */
+/*   Updated: 2022/12/14 17:22:21 by adamiens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 # include <unistd.h>
 # include <limits.h>
 # include <stdarg.h>
+# include "get_next_line.h"
 
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
-	int				index;
 }	t_list;
 void	ft_bzero(void *s, size_t n);
 int		ft_isalpha(int c);

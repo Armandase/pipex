@@ -6,7 +6,7 @@
 /*   By: adamiens <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 13:09:58 by adamiens          #+#    #+#             */
-/*   Updated: 2022/12/09 10:19:26 by adamiens         ###   ########.fr       */
+/*   Updated: 2022/12/12 09:20:23 by adamiens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ void	ft_verif_args(char **argv, char **directory, t_args *args)
 			offset++;
 		}
 		args[i - offset].command = ft_split(argv[i], ' ');
-		//args[i - 2].command = ft_split(argv[i], ' ');
-		//ft_cpy_path(args[i - 2].command, directory);
 		ft_cpy_path(args[i - offset].command, directory);
 		i++;
 	}
